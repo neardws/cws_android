@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/img_warning"
+            android:layout_width="199dp"
+            android:layout_height="199dp" />
+
+        <TextView
+            android:id="@+id/textLog"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:singleLine="false"
+            android:maxLines="10"
+            android:ellipsize="end"
+            android:layout_toEndOf="@+id/img_warning"
+            android:text="Log" />
+
+        <EditText
+            android:id="@+id/et_ipAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_warning"
+            android:hint="192.168.42.101" />
+
+        <Button
+            android:id="@+id/btn_testPing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_warning"
+            android:layout_toEndOf="@+id/et_ipAdd"
+            android:text="Ping" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_warning"
+            android:layout_toEndOf="@+id/btn_testPing"
+            android:visibility="gone"
+            android:clickable="false"
+            android:text="Time Sync" />
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_warning"
+            android:layout_toEndOf="@+id/btn_testPing"
+            android:text="Start"/>
+
+        <TextView
+            android:id="@+id/tvPingResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_warning"
+            android:layout_toEndOf="@+id/btn_start"
+            android:hint="Result" />
+
+        <TableLayout
+            android:id="@+id/table_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_ipAdd">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Local IP"/>
+
+                <TextView
+                    android:id="@+id/tv_mac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Local IP"/>
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID" />
+
+                <EditText
+                    android:id="@+id/et_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_id" />
+
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_timeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TimeStamp" />
+
+                <EditText
+                    android:id="@+id/et_timeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_timeStamp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Speed" />
+
+                <EditText
+                    android:id="@+id/et_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_speed" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_direction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Direction" />
+
+                <EditText
+                    android:id="@+id/et_direction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_direction" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_lat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latitude" />
+
+                <EditText
+                    android:id="@+id/et_lat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_lat" />
+
+                <TextView
+                    android:id="@+id/tv_acc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Accuracy"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_lon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Longitude" />
+
+                <EditText
+                    android:id="@+id/et_lon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_lon" />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="LocationType"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_ace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acceleration" />
+
+                <EditText
+                    android:id="@+id/et_ace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="send_ace" />
+            </TableRow>
+        </TableLayout>
+
+
+        <TableLayout
+            android:id="@+id/table_showtest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/table_layout">
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID"/>
+                <TextView
+                    android:id="@+id/tv_showid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="id" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Warning" />
+                <TextView
+                    android:id="@+id/tv_warning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="warning" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"/>
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="time" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Distance"/>
+                <TextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="distance" />
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/table_showtest"
+            android:text="QUERY"/>
+        <Button
+            android:id="@+id/btn_backup"
+            android:text="Backup"
+            android:layout_below="@+id/table_showtest"
+            android:layout_toEndOf="@id/btn_query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_sql"
+            android:layout_below="@id/table_showtest"
+            android:layout_toEndOf="@+id/btn_backup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+</ScrollView>
+
+</android.support.constraint.ConstraintLayout>
