@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);//加载布局
 
-        sntpClient = new SntpClient();
+       // sntpClient = new SntpClient();
 
         intentFilter.addAction(ReceiveThread.ACTION_STRING);
         intentFilter.addAction(ReceiveThread.ACTION_JSON);
@@ -717,12 +717,12 @@ public class MainActivity extends AppCompatActivity {
             message.setAce(Double.valueOf(ace));
         }
         message.setType(Message.TYPE_MESSAGE);   //普通消息
-        if (sntpClient.requestTime(NTP_ALIYUN,TIME_OUT)) {
-            long now = sntpClient.getNtpTime()+ SystemClock.elapsedRealtime()- sntpClient.getNtpTimeReference();
-            message.setTimeStamp(now);
-        } else {
-            message.setTimeStamp(-666);
-        }
+//        if (sntpClient.requestTime(NTP_ALIYUN,TIME_OUT)) {
+//            long now = sntpClient.getNtpTime()+ SystemClock.elapsedRealtime()- sntpClient.getNtpTimeReference();
+//            message.setTimeStamp(now);
+//        } else {
+//            message.setTimeStamp(-666);
+//        }
 
         //现在Message里面已经有对应格式的数据，接下来是将数据转化为json格式。
 

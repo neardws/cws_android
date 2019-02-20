@@ -4,10 +4,12 @@ package com.github.cqu_bdsc.collision_warning_system.udp;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 
 import com.github.cqu_bdsc.collision_warning_system.DAO.Message;
 import com.github.cqu_bdsc.collision_warning_system.MainActivity;
+import com.github.cqu_bdsc.collision_warning_system.ntp.SntpClient;
 
 import org.json.JSONObject;
 
@@ -38,6 +40,11 @@ public class SendService extends IntentService  {//继承父类IntentService
     public static final String EXTRAS_STRING    = "EXTRAS_STRING";//在子类中定义常量
     public static final String EXTRAS_JSON        = "EXTRAS_JSON";
 
+    private static final String NTP_ALIYUN = "120.25.108.11";
+    private static final int TIME_OUT = 200;
+
+    private SntpClient sntpClient;
+
     public SendService(String name){
         super(name);
     }
@@ -47,7 +54,7 @@ public class SendService extends IntentService  {//继承父类IntentService
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         Context context = getApplicationContext();
-
+        sntpClient = new SntpClient();
         /**
          * 发送字符串
          */
@@ -86,6 +93,12 @@ public class SendService extends IntentService  {//继承父类IntentService
                 }
             } else if (action.equals(SendService.ACTION_SEND_JSON)){
                 final Message message = (Message) intent.getExtras().get(EXTRAS_JSON);
+                if (sntpClient.requestTime(NTP_ALIYUN,TIME_OUT)) {
+                    long now = sntpClient.getNtpTime()+ SystemClock.elapsedRealtime()- sntpClient.getNtpTimeReference();
+                    message.setTimeStamp(now);
+                } else {
+                    message.setTimeStamp(-666);
+                }
                 final JSONObject jsonObject = message.toJSON();
 
                 new Thread(new Runnable() {
