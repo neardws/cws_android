@@ -128,8 +128,18 @@ public class Message implements Serializable {
             jsonObject.put("lat",String.valueOf(getLat()));
             jsonObject.put("lon",String.valueOf(getLon()));
             jsonObject.put("acc",String.valueOf(getAce()));
-//            jsonObject.put("adddata","A few months ago I was nominated for Governor of the great state of New York, to run against Mr. John T. Smith and Mr. Blank J. Blank on an independent ticket. I somehow felt that I had one prominent advantage over these gentlemen, and that was--good character. It was easy to see " +
-//                    "I thought I should burst with amazement! Such a cruel, heartless charge! I never had seen Cochin China! I never had heard of Wakawak! I ");
+//            jsonObject.put("adddata","adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl\n" +
+//                    "adfadsfsdfasdfasdfsdafsadfsdfsdfsdfasdfkljkjdjkljskcjkljsfkljsjkflajl");
             return jsonObject;
         } catch (JSONException e) {
             e.printStackTrace();

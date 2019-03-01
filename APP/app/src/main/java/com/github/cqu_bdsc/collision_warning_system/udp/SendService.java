@@ -11,6 +11,7 @@ import com.github.cqu_bdsc.collision_warning_system.DAO.Message;
 import com.github.cqu_bdsc.collision_warning_system.MainActivity;
 import com.github.cqu_bdsc.collision_warning_system.ntp.SntpClient;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -110,20 +111,25 @@ public class SendService extends IntentService  {//继承父类IntentService
                             if (udpSocket == null){
                                 udpSocket = new DatagramSocket();
                             }
-                            byte[] buff = (byte[]) jsonObject.toString().getBytes("UTF-8");
 
-                            packet = new DatagramPacket(buff, buff.length,serverAddr,Integer.valueOf(port));
+
                             //构造数据包，用来将length长度的数据包发送到指定主机（指定mac地址的主机）上的指定端口号
-                            udpSocket.send(packet);
+                            //udpSocket.send(packet);
 
-//                            for (int i = 0; i <25; i++){
-//                                udpSocket.send(packet);
-//                            }
+                            for (int i = 1; i <= 51; i++){
+                                jsonObject.put("num", String.valueOf(i));
+                                byte[] buff = (byte[]) jsonObject.toString().getBytes("UTF-8");
+
+                                packet = new DatagramPacket(buff, buff.length,serverAddr,Integer.valueOf(port));
+                                udpSocket.send(packet);
+                            }
                         } catch (SocketException e) {
                             e.printStackTrace();
                         }  catch (IOException e){
                             e.printStackTrace();
-                        }finally {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } finally {
                             if (udpSocket != null){
                                 udpSocket.close();
                             }
@@ -140,10 +146,20 @@ public class SendService extends IntentService  {//继承父类IntentService
                             //2.获取输出流，向服务器端发送信息
                             OutputStream os=socket.getOutputStream();//字节输出流
                             PrintWriter pw=new PrintWriter(os);//将输出流包装为打印流
-                            byte[] buff = (byte[]) jsonObject.toString().getBytes("UTF-8");
-                            String str = new String(buff);
-                            pw.write(str);
-                            pw.flush();
+                            int i = 1;
+                            while (i <= 51){
+                                jsonObject.put("num", i);
+                                byte[] buff = (byte[]) jsonObject.toString().getBytes("UTF-8");
+                                String str = new String(buff);
+                                pw.write(str);
+                                pw.flush();
+                                i = i + 1;
+                            }
+
+//                            byte[] buff = (byte[]) jsonObject.toString().getBytes("UTF-8");
+//                            String str = new String(buff);
+//                            pw.write(str);
+//                            pw.flush();
                             socket.shutdownOutput();//关闭输出流
                             //4.关闭资源
                             pw.close();
@@ -152,6 +168,8 @@ public class SendService extends IntentService  {//继承父类IntentService
                         } catch (UnknownHostException e) {//
                             e.printStackTrace();
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
